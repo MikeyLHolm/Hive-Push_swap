@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:25:16 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/14 16:13:31 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/17 14:41:46 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,21 @@ t_lst	*lst_create_prepend(t_lst *head, int nb)
 
 	node = lst_create_node(nb);
 	return (lst_append(head, node));
+}
+
+void	lst_free(t_stack *stack)
+{
+	int		i;
+	t_lst	*current;
+	t_lst	*tmp;
+
+	i = -1;
+	current = stack->head;
+	while (++i < stack->size)
+	{
+		tmp = current;
+		current = current->next;
+		free(tmp);
+	}
+	free(stack);
 }
