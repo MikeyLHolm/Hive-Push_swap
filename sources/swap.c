@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:53 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/18 13:21:55 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/19 09:52:13 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **			Do nothing if there is only one or no elements.
 */
 
-t_stack		*lst_swap(t_stack *stack)
+void		lst_swap(t_stack *stack)
 {
 	t_lst		*tail;
 	t_lst		*first;
@@ -38,7 +38,6 @@ t_stack		*lst_swap(t_stack *stack)
 		third->previous = first;
 		stack->head = second;
 	}
-	return (stack);
 }
 
 /*
@@ -47,6 +46,6 @@ t_stack		*lst_swap(t_stack *stack)
 
 void		lst_ss(t_stack *stack_a, t_stack *stack_b)
 {
-	stack_a = lst_swap(stack_a);
-	stack_b = lst_swap(stack_b);
+	lst_swap(stack_a);
+	lst_swap(stack_b);
 }

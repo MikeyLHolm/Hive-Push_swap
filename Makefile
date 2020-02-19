@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/13 16:00:06 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/19 11:30:38 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,20 +28,29 @@ HEADER_FILES = push_swap.h
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADER_FILES))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCE_FILES = display.c exit.c list_functions.c validate.c
+SOURCE_FILES =	display.c \
+				exit.c \
+				initialization.c \
+				list_functions.c \
+				push.c \
+				rev_rotate.c \
+				rotate.c \
+				swap.c \
+				utilities.c \
+				validate.c 
 SOURCE_FILES_CH = checker.c
 SOURCE_FILES_PS = push_swap.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCE_FILES))
-SOURCES_PS = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST_PS))
-SOURCES_CH = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST_CH))
+SOURCES_PS = $(addprefix $(SOURCES_DIRECTORY), $(SOURCE_FILES_PS))
+SOURCES_CH = $(addprefix $(SOURCES_DIRECTORY), $(SOURCE_FILES_CH))
 
 OBJECTS_DIRECTORY = ./objects/
 OBJECT_FILES = $(patsubst %.c, %.o, $(SOURCE_FILES))
-OBJECT_FILES_CH = $(patsubst %.c, %.o, $(SOURCES_LIST_CH))
-OBJECT_FILES_PS = $(patsubst %.c, %.o, $(SOURCES_LIST_PS))
+OBJECT_FILES_CH = $(patsubst %.c, %.o, $(SOURCE_FILES_CH))
+OBJECT_FILES_PS = $(patsubst %.c, %.o, $(SOURCE_FILES_PS))
 OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECT_FILES))
-OBJECTS_PS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST_PS))
-OBJECTS_CH = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST_CH))
+OBJECTS_PS = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECT_FILES_PS))
+OBJECTS_CH = $(addprefix $(OBJECTS_DIRECTORY), $(OBJECT_FILES_CH))
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -77,8 +86,11 @@ lib:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 	@echo "$(NAME_PS): $(GREEN)$(LIBFT) OK!$(RESET)"
 run:
-	$(CC) $(FLAGS) $(LIBRARIES) $(SOURCES_DIRECTORY)push_swap.c $(SOURCES_DIRECTORY)validate.c \
-	$(SOURCES_DIRECTORY)display.c $(SOURCES_DIRECTORY)exit.c $(SOURCES_DIRECTORY)list_functions.c
+	$(CC) $(FLAGS) $(LIBRARIES) $(SOURCES_PS) $(SOURCES)
+	
+	# $(SOURCES_DIRECTORY)push_swap.c $(SOURCES_DIRECTORY)validate.c \
+	# $(SOURCES_DIRECTORY)display.c $(SOURCES_DIRECTORY)exit.c $(SOURCES_DIRECTORY)list_functions.c
+	
 	./a.out 1 3 2
 
 # ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l
@@ -97,6 +109,7 @@ fclean: clean
 	@echo "$(NAME_PS): [$(RED)$(NAME_PS) was deleted$(RESET)]"
 	@rm -f $(NAME_CH)
 	@echo "$(NAME_PS): [$(RED)$(NAME_CH) was deleted$(RESET)]"
+	@rm a.out
 
 re:
 	@$(MAKE) fclean

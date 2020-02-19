@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:25:16 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/18 13:28:51 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/19 11:37:02 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_lst		*lst_pop(t_stack *stack)
 	return (tmp);
 }
 
-void	lst_free(t_stack *stack)
+void		lst_free(t_stack *stack)
 {
 	int		i;
 	t_lst	*current;
