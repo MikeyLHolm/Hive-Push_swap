@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 12:49:00 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/17 17:07:34 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:09:04 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,22 @@ void		display_stack(t_lst *lst)
 
 	i = -1;
 	write(1, "------------\nStacks a & b\n\n  ", 29);
-	head = lst;
-	if (lst->nb < 0)
+	if (lst)
+	{
+		head = lst;
+		if (lst->nb < 0)
 			ft_printf("%d\n", lst->nb);
 		else
 			ft_printf(" %d\n", lst->nb);
-	lst = lst->next;
-	while (lst != head)
-	{
-		if (lst->nb < 0)
-			ft_printf("  %d\n", lst->nb);
-		else
-			ft_printf("   %d\n", lst->nb);
 		lst = lst->next;
+		while (lst != head)
+		{
+			if (lst->nb < 0)
+				ft_printf("  %d\n", lst->nb);
+			else
+				ft_printf("   %d\n", lst->nb);
+			lst = lst->next;
+		}
 	}
 	write(1, "   _   _\n   a   b\n------------\n", 31);
 }

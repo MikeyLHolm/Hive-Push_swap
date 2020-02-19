@@ -6,59 +6,47 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:53 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/17 17:11:36 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/18 13:21:55 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-**	sa:	swap a - swap the first 2 elements at the top of stack a. 
-**		Do nothing if there is only one or no elements.
+**	sa/sb:	swap a/b - swap the first 2 elements at the top of stack a/b.
+**			Do nothing if there is only one or no elements.
 */
 
-t_stack		*sa(t_stack *stack_a)
+t_stack		*lst_swap(t_stack *stack)
 {
-	t_lst		*tmp;
-	t_lst		*prev;
-	t_lst		*follow;
+	t_lst		*tail;
+	t_lst		*first;
+	t_lst		*second;
+	t_lst		*third;
 
-	if (stack_a->head && stack_a->head->next)
+	if (stack->head && stack->head->next)
 	{
-		tmp = stack_a->head;
-		follow = stack_a->head->next->next;
-		prev = stack_a->head->previous;
-		stack_a->head = stack_a->head->next;
-		stack_a->head->next = tmp;
-		stack_a->head->next->next = follow;
-		stack_a->head->previous = prev;
+		first = stack->head;
+		second = first->next;
+		third = second->next;
+		tail = first->previous;
+		second->next = first;
+		second->previous = tail;
+		tail->next = second;
+		first->next = third;
+		first->previous = second;
+		third->previous = first;
+		stack->head = second;
 	}
-	return (stack_a);
-}
-
-/*
-**	sb:	swap b - swap the first 2 elements at the top of stack b.
-**		Do nothing if there is only one or no elements.
-*/
-
-void	sb(t_stack *stack_b)
-{
-	t_lst		*tmp;
-
-	if (stack_b->head && stack_b->head->next)
-	{
-		tmp = stack_b->head;
-		stack_b->head = stack_b->head->next;
-		stack_b->head->next = tmp;
-	}
+	return (stack);
 }
 
 /*
 **	ss:	sa and sb at the same time.
 */
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void		lst_ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	stack_a = lst_swap(stack_a);
+	stack_b = lst_swap(stack_b);
 }

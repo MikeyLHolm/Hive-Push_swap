@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/17 16:47:08 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/18 13:26:14 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef	struct			s_lst
 typedef	struct			s_stack
 {
 	t_lst				*head;
-	t_lst				*lst;
+	// t_lst				*lst;
 	int					min;
 	int					max;
 	int					size;
@@ -72,9 +72,13 @@ void			validate(t_lst **lst, int ac, char **av);
 **	Operational functions
 */
 
-t_stack			*sa(t_stack *stack_a);
-void			sb(t_stack *stack_b);
-void			ss(t_stack *stack_a, t_stack *stack_b);
+void			lst_pop_push(t_stack *dst, t_stack *src);		// pa + pb
+void			lst_rev_rotate(t_stack *stack);						// rra + rrb
+void			lst_rrr(t_stack *stack_a, t_stack *stack_b);	// rrr
+void			lst_rotate(t_stack *stack);						// ra + rb
+void			lst_rr(t_stack *stack_a, t_stack *stack_b);		// rr
+t_stack			*lst_swap(t_stack *stack);						// sa + sb
+void			lst_ss(t_stack *stack_a, t_stack *stack_b);		// ss
 
 /*
 **	Rest of the list functions.
@@ -84,6 +88,8 @@ void			lst_add(t_stack *stack, t_lst *node);
 void			lst_free(t_stack *stack);
 t_lst			*lst_create_node(int nb);
 t_lst			*lst_prepend(t_lst *head, t_lst *node);
+t_lst			*lst_pop(t_stack *stack);
+void			lst_push(t_stack *stack, t_lst *node);
 t_lst			*lst_append(t_lst *head, t_lst *node);
 t_lst			*lst_create_append(t_lst *head, int nb);
 t_lst			*lst_create_prepend(t_lst *head, int nb);

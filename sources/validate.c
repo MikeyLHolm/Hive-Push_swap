@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 10:26:19 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/17 14:53:59 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:53:44 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				ft_isint(char *str)
 		if (tmp[0] == '-' || tmp[0] == '+')
 			tmp++;
 		if (*tmp > '9' || *tmp < '0')
-			exit_error (ER_NOTINT);
+			exit_error(ER_NOTINT);
 		tmp++;
 	}
 	nbr = ft_atoimax(str);
@@ -117,7 +117,8 @@ t_stack			*parse(int ac, char **av)
 	t_stack	*stack_a;
 
 	stack_a = init_stack();
-	// Check if input is string of arguments or multiple arguments. multiple strings of arguments too? Perhaps not valid input
+	// Check if input is string of arguments or multiple arguments.
+	// multiple strings of arguments too? Perhaps not valid input
 	parse_array(stack_a, ac, av);
 	return (stack_a);
 }
