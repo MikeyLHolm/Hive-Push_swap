@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:52:10 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/19 15:58:40 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/21 11:06:59 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int			main(int ac, char **av)
 	// ft_printf("Stack size = %d\n", stack_a->size);
 	// Calc moves to sort> then pick fewest.
 
-	find_median(stack_a);
-	ft_printf("min value = %d, %d", stack_a->min_value);
+	// find_median(stack_a);
+	// ft_printf("min value = %d, %d", stack_a->min_value);
+	
 	// lst_pop_push(stack_b, stack_a);
 	// write(1, "pb\n", 3);
 	// display_stack(stack_a->head);
@@ -87,6 +88,6 @@ int			main(int ac, char **av)
 
 	// lst_free(stack_a);
 	// lst_free(stack_b);
-	// while (1);
+	while (1);
 	return (0);
 }

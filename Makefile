@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/19 11:30:38 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/21 16:08:17 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,10 +87,6 @@ lib:
 	@echo "$(NAME_PS): $(GREEN)$(LIBFT) OK!$(RESET)"
 run:
 	$(CC) $(FLAGS) $(LIBRARIES) $(SOURCES_PS) $(SOURCES)
-	
-	# $(SOURCES_DIRECTORY)push_swap.c $(SOURCES_DIRECTORY)validate.c \
-	# $(SOURCES_DIRECTORY)display.c $(SOURCES_DIRECTORY)exit.c $(SOURCES_DIRECTORY)list_functions.c
-	
 	./a.out 1 3 2
 
 # ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l

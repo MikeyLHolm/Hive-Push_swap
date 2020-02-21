@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/19 15:44:00 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:03:28 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 # include <stdlib.h>
 
 # define ER_DUP			"Error: Duplicate found!"
+# define ER_GNL			"Error: Get Next Line!"
 # define ER_MALLOC		"Error: Failed Malloc!"
 # define ER_NOARG		"Error: No arguments!"
 # define ER_NOTINT		"Error: Not an int!"
 # define ER_NOVALARG	"Error: No valid arguments!"
+
+// # define OK				
+// # define KO
 
 /*
 **	List inside a stack
