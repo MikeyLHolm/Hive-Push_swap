@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:51:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/21 16:08:07 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:14:40 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,34 @@
 **
 */
 
+int		pw_is_line_valid(const char *line)
+{
+	if (ft_strequ(line, "sa"))
+		return (1);
+	else if (ft_strequ(line, "sb"))
+		return (1);
+	else if (ft_strequ(line, "ss"))
+		return (1);
+	else if (ft_strequ(line, "pa"))
+		return (1);
+	else if (ft_strequ(line, "pb"))
+		return (1);
+	else if (ft_strequ(line, "ra"))
+		return (1);
+	else if (ft_strequ(line, "rb"))
+		return (1);
+	else if (ft_strequ(line, "rr"))
+		return (1);
+	else if (ft_strequ(line, "rra"))
+		return (1);
+	else if (ft_strequ(line, "rrb"))
+		return (1);
+	else if (ft_strequ(line, "rrr"))
+		return (1);
+	else
+		return (0);
+}
+
 void	checker(int ac, char **av)
 {
 	char		*line;
@@ -32,11 +60,12 @@ void	checker(int ac, char **av)
 	stack_a = parse(ac, av);
 	while (get_next_line(0, &line) > 0)
 	{
-		line...
+		
+		free(line);
 	}
 	if (ret < 0)
 		exit_error(ER_GNL);
-	if (is_sorted(stack_a->head && stack_b->head == NULL))
+	if (is_sorted(stack_a->head) && stack_b->head == NULL)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

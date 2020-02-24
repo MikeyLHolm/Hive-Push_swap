@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:53 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/19 09:52:13 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:47:49 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,18 @@
 
 void		lst_swap(t_stack *stack)
 {
-	t_lst		*tail;
-	t_lst		*first;
-	t_lst		*second;
-	t_lst		*third;
+	t_lst		*tmp;
 
-	if (stack->head && stack->head->next)
+	if (stack->head && stack->head->next != stack->head)
 	{
-		first = stack->head;
-		second = first->next;
-		third = second->next;
-		tail = first->previous;
-		second->next = first;
-		second->previous = tail;
-		tail->next = second;
-		first->next = third;
-		first->previous = second;
-		third->previous = first;
-		stack->head = second;
+		tmp = stack->head;
+		stack->head->next->previous = stack->head->previous;
+		stack->head->previous->next = stack->head->next;
+		stack->head = stack->head->next;
+		tmp->next = stack->head->next;
+		tmp->previous = stack->head;
+		stack->head->next->previous = tmp;
+		stack->head->next = tmp;
 	}
 }
 

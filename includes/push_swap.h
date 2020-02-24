@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/21 16:03:28 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:17:55 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int				is_rev_sorted(t_lst *stack);
 int				is_sorted(t_lst *stack);
 int				main(int ac, char **av);
 t_stack			*parse(int ac, char **av);
+void			sort(t_stack *stack_a, t_stack *stack_b);
 void			validate(t_lst **lst, int ac, char **av);
 
 /*

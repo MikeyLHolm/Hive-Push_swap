@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:52:10 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/21 11:06:59 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:30:07 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ int			main(int ac, char **av)
 	}
 	stack_b = init_stack();
 	display_stack(stack_a->head);
-	display_stack(stack_b->head);
+	// display_stack(stack_b->head);
+	sort(stack_a, stack_b);
+	// is_sorted(stack_a->head);
+	display_stack(stack_a->head);
+	// display_stack(stack_b->head);
 	// ft_printf("Stack size = %d\n", stack_a->size);
 	// Calc moves to sort> then pick fewest.
 
@@ -88,6 +92,6 @@ int			main(int ac, char **av)
 
 	// lst_free(stack_a);
 	// lst_free(stack_b);
-	while (1);
+	// while (1);
 	return (0);
 }
