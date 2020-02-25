@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/24 15:48:43 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/25 11:37:46 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SOURCE_FILES =	display.c \
 				rev_rotate.c \
 				rotate.c \
 				sort.c \
+				sort_algo.c \
 				swap.c \
 				utilities.c \
 				validate.c 

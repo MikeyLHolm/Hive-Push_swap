@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:31 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/18 13:23:46 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/25 09:44:27 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 **		The first element becomes the last one.
 */
 
-void		lst_rotate(t_stack *stack)
+void		lst_rotate(t_stack *stack, char *str)
 {
 	if (stack && stack->head)
+	{
 		stack->head = stack->head->next;
+		ft_printf("%s\n", str);
+	}
 }
 
 /*
@@ -34,6 +37,8 @@ void		lst_rotate(t_stack *stack)
 
 void		lst_rr(t_stack *stack_a, t_stack *stack_b)
 {
-	lst_rotate(stack_a);
-	lst_rotate(stack_b);
+	ft_printf("rr\n   ");
+	lst_rotate(stack_a, "ra");
+	ft_printf("   ");
+	lst_rotate(stack_b, "rb");
 }

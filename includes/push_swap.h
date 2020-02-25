@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/24 16:17:55 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:32:53 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,31 @@ typedef struct			s_push_swap
 	t_stack		*stack_bspare;
 }						t_push_swap;
 
-void			display_stack(t_lst *lst);
+void			display_stack(t_lst *lst, char c);
 void			exit_error(const char *str);
+long			find_biggest(t_lst *head);
 void			find_median(t_stack *stack);
+long			find_smallest(t_lst *head);
 t_stack			*init_stack(void);
 int				is_rev_sorted(t_lst *stack);
 int				is_sorted(t_lst *stack);
 int				main(int ac, char **av);
 t_stack			*parse(int ac, char **av);
 void			sort(t_stack *stack_a, t_stack *stack_b);
+void			sort_algo(t_stack *stack_a, t_stack *stack_b);
 void			validate(t_lst **lst, int ac, char **av);
 
 /*
 **	Operational functions
 */
 
-void			lst_pop_push(t_stack *dst, t_stack *src);		// pa + pb
-void			lst_rev_rotate(t_stack *stack);					// rra + rrb
-void			lst_rrr(t_stack *stack_a, t_stack *stack_b);	// rrr
-void			lst_rotate(t_stack *stack);						// ra + rb
-void			lst_rr(t_stack *stack_a, t_stack *stack_b);		// rr
-void			lst_swap(t_stack *stack);						// sa + sb
-void			lst_ss(t_stack *stack_a, t_stack *stack_b);		// ss
+void			lst_pop_push(t_stack *dst, t_stack *src, char *str);		// pa + pb
+void			lst_rev_rotate(t_stack *stack, char *str);					// rra + rrb
+void			lst_rrr(t_stack *stack_a, t_stack *stack_b);				// rrr
+void			lst_rotate(t_stack *stack, char *str);						// ra + rb
+void			lst_rr(t_stack *stack_a, t_stack *stack_b);					// rr
+void			lst_swap(t_stack *stack, char *str);						// sa + sb
+void			lst_ss(t_stack *stack_a, t_stack *stack_b);					// ss
 
 /*
 **	Rest of the list functions.

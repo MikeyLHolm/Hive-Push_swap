@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 10:26:19 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/21 12:52:24 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:54:03 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ static void		validate_str(t_stack *stack_a, char *str)
 		arr[i] = NULL;
 	}
 	ft_strdel(arr);
-}	
+}
 
 /*
 **	Main parsing function. Creates stack and returns it to main after parsing.

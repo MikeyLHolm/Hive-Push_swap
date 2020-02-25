@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:23:30 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/19 15:55:21 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:59:38 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			is_sorted(t_lst *stack)
 		if (stack->nb > stack->next->nb)
 		{
 			write(1, "NOT SORTED\n", 11);
-			return (0) ;
+			return (0);
 		}
 		stack = stack->next;
 	}
@@ -44,7 +44,7 @@ int			is_rev_sorted(t_lst *stack)
 		if (stack->nb < stack->next->nb)
 		{
 			write(1, "NOT SORTED\n", 11);
-			return (0) ;
+			return (0);
 		}
 		stack = stack->next;
 	}
@@ -79,15 +79,50 @@ t_lst		*next_index(t_stack *stack)
 					min = tmp;
 				}
 				tmp = tmp->next;
-			}		
+			}
 		}
 	}
 	return (min);
 }
 
+long		find_smallest(t_lst *head)
+{
+	int		smallest;
+	int		tmp;
+
+	smallest = head->nb;
+	tmp = head->nb;
+	while (head != NULL)
+	{
+		if (smallest > head->nb)
+			smallest = head->nb;
+		if (head->next && head->next->nb != tmp)
+			break ;
+		head = head->next;
+	}
+	return (smallest);
+}
+
+long		find_biggest(t_lst *head)
+{
+	int		biggest;
+	int		tmp;
+
+	biggest = head->nb;
+	tmp = head->nb;
+	while (head != NULL)
+	{
+		if (biggest < head->nb)
+			biggest = head->nb;
+		if (head->next && head->next->nb != tmp)
+			break ;
+		head = head->next;
+	}
+	return (biggest);
+}
+
 void		find_median(t_stack *stack)
 {
-
 	int		i;
 	t_lst	*tmp;
 
