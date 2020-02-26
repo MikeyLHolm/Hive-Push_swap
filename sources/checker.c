@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:51:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/24 16:14:40 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:36:54 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	checker(int ac, char **av)
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 
+	stack_b = init_stack();
 	stack_a = parse(ac, av);
 	while (get_next_line(0, &line) > 0)
 	{
@@ -65,10 +66,12 @@ void	checker(int ac, char **av)
 	}
 	if (ret < 0)
 		exit_error(ER_GNL);
-	if (is_sorted(stack_a->head) && stack_b->head == NULL)
+	if (is_sorted(stack_a->head) && stack_b->size == 0)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	lst_free(stack_a);
+	lst_free(stack_b);
 }
 
 int		main(int ac, char **av)

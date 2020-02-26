@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 12:49:00 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 15:36:43 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:24:11 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		display_stack(t_lst *lst, char c)
 		lst = lst->next;
 		while (lst != head)
 		{
-			ft_printf(" - %d", lst->nb);
+			ft_printf(" <> %d", lst->nb);
 			lst = lst->next;
 		}
 	}

@@ -6,37 +6,11 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 10:26:19 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 15:54:03 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 11:23:32 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*
-**	AtoI to handle up to intmax_t.
-*/
-
-intmax_t		ft_atoimax(const char *str)
-{
-	intmax_t	res;
-	int			sign;
-
-	res = 0;
-	sign = 1;
-	while (*str && (*str == '\r' || *str == '\n' || *str == '\t' ||
-					*str == '\f' || *str == '\v' || *str == ' '))
-		str++;
-	if (str[0] == '-')
-		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (*str && *str >= '0' && *str <= '9')
-	{
-		res = res * 10 + (*str - 48);
-		str++;
-	}
-	return (res * sign);
-}
 
 /*
 **	Check if input is int.
@@ -85,11 +59,6 @@ static void		ft_isdup(t_stack *stack_a, int nb)
 }
 
 /*
-**	Parse thru array if input is a string instead multiple arguments.
-**	Add arguments to a linked list.
-*/
-
-/*
 **	Parse thru array if input if input is multiple arguments.
 **	Add arguments to a linked list.
 */
@@ -107,6 +76,11 @@ static void		validate_array(t_stack *stack_a, int ac, char **av)
 		lst_add(stack_a, lst_create_node(nb));
 	}
 }
+
+/*
+**	Parse thru array if input is a string instead multiple arguments.
+**	Add arguments to a linked list.
+*/
 
 static void		validate_str(t_stack *stack_a, char *str)
 {
@@ -136,7 +110,6 @@ t_stack			*parse(int ac, char **av)
 	t_stack		*stack_a;
 
 	stack_a = init_stack();
-	// multiple strings of arguments too? Perhaps not valid input
 	if (ac == 2)
 		validate_str(stack_a, av[1]);
 	else

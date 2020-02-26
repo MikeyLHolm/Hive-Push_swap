@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/25 11:37:46 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/26 11:49:43 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SOURCE_FILES =	display.c \
 				exit.c \
 				initialization.c \
 				list_functions.c \
+				median.c \
 				push.c \
 				rev_rotate.c \
 				rotate.c \

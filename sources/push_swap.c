@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:52:10 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 15:41:22 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:22:48 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int			main(int ac, char **av)
 	if (is_sorted(stack_a->head))
 	{
 		display_stack(stack_a->head, 'A');
+		lst_free(stack_a);
 		return (0);
 	}
 	stack_b = init_stack();
@@ -38,8 +39,8 @@ int			main(int ac, char **av)
 	// find_median(stack_a);
 	// ft_printf("Stack size = %d\n", stack_a->size);
 	// ft_printf("Stack size = %d\n", stack_b->size);
-	// lst_free(stack_a);
-	// lst_free(stack_b);
+	lst_free(stack_a);
+	lst_free(stack_b);
 	// while (1);
 	return (0);
 }

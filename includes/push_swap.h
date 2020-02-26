@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 15:32:53 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 11:47:46 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct			s_push_swap
 void			display_stack(t_lst *lst, char c);
 void			exit_error(const char *str);
 long			find_biggest(t_lst *head);
-void			find_median(t_stack *stack);
+int				find_median(t_stack *stack);
 long			find_smallest(t_lst *head);
 t_stack			*init_stack(void);
 int				is_rev_sorted(t_lst *stack);

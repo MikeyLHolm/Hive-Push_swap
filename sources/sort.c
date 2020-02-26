@@ -6,11 +6,39 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:48:02 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 16:00:13 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:00:52 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void		rev_sort_3(t_stack *stack_b)
+{
+	if (stack_b->head->nb < stack_b->head->next->nb &&
+		stack_b->head->nb > stack_b->head->previous->nb &&
+		stack_b->head->previous->nb < stack_b->head->next->nb)
+		lst_swap(stack_b, "sb");
+	else if (stack_b->head->nb < stack_b->head->next->nb &&
+		stack_b->head->nb < stack_b->head->previous->nb &&
+		stack_b->head->previous->nb > stack_b->head->next->nb)
+	{
+		lst_swap(stack_b, "sb");
+		lst_rev_rotate(stack_b, "rrb");
+	}
+	else if (stack_b->head->nb < stack_b->head->next->nb &&
+		stack_b->head->nb < stack_b->head->previous->nb &&
+		stack_b->head->previous->nb < stack_b->head->next->nb)
+		lst_rotate(stack_b, "rb");
+	else if (stack_b->head->nb > stack_b->head->next->nb &&
+		stack_b->head->nb > stack_b->head->previous->nb &&
+		stack_b->head->previous->nb > stack_b->head->next->nb)
+	{
+		lst_swap(stack_b, "sb");
+		lst_rotate(stack_b, "rb");
+	}
+	else if (!is_rev_sorted(stack_b->head))
+		lst_rev_rotate(stack_b, "rrb");
+}
 
 void		sort_3(t_stack *stack_a)
 {
@@ -67,50 +95,32 @@ void		sort_4(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void		sort_5_2(t_stack *stack_a, t_stack *stack_b, int token)
+void		sort_56(t_stack *stack_a, t_stack *stack_b)
 {
-	if (token == 1)
-	{
-		lst_rotate(stack_a, "ra");
-		lst_rotate(stack_a, "ra");
-		lst_pop_push(stack_a, stack_b, "pa");
-		lst_rev_rotate(stack_a, "rra");
-		lst_rev_rotate(stack_a, "rra");
-	}
-	else if (token == 2)
-	{
-		lst_rev_rotate(stack_a, "rra");
-		lst_pop_push(stack_a, stack_b, "pa");
-		lst_rotate(stack_a, "ra");
-		lst_rotate(stack_a, "ra");
-	}
-}
+	int		token;
+	int		median;
+	t_lst	*tmp;
 
-void		sort_5(t_stack *stack_a, t_stack *stack_b)
-{
-	lst_pop_push(stack_b, stack_a, "pb");
-	lst_pop_push(stack_b, stack_a, "pb");
+	median = find_median(stack_a);
+	tmp = stack_a->head->previous;
+	token = 0;
+	while (token != 1)
+	{
+		token = (tmp == stack_a->head) ? 1 : 0;
+		if (stack_a->head->nb < median)
+			lst_pop_push(stack_b, stack_a, "pb");
+		else
+			lst_rotate(stack_a, "ra");
+	}
 	sort_3(stack_a);
-	sort_4(stack_a, stack_b);
-	if (stack_b->head->nb < find_smallest(stack_a->head))
+	if (stack_b->size == 2 && !is_rev_sorted(stack_b->head))
+		lst_swap(stack_b, "sb");
+	else if (stack_b->size == 3 && !is_rev_sorted(stack_b->head))
+		rev_sort_3(stack_b);
+	lst_pop_push(stack_a, stack_b, "pa");
+	lst_pop_push(stack_a, stack_b, "pa");
+	if (stack_b->size == 1)
 		lst_pop_push(stack_a, stack_b, "pa");
-	else if (stack_b->head->nb > stack_a->head->nb &&
-			stack_b->head->nb < stack_a->head->next->nb)
-	{
-		lst_pop_push(stack_a, stack_b, "pa");
-		lst_swap(stack_a, "sa");
-	}
-	else if (stack_b->head->nb > stack_a->head->next->nb &&
-			stack_b->head->nb < stack_a->head->next->next->nb)
-		sort_5_2(stack_a, stack_b, 1);
-	else if (stack_b->head->nb > stack_a->head->next->next->nb &&
-			stack_b->head->nb < stack_a->head->previous->nb)
-		sort_5_2(stack_a, stack_b, 2);
-	else if (stack_b->head->nb > find_biggest(stack_a->head))
-	{
-		lst_pop_push(stack_a, stack_b, "pa");
-		lst_rotate(stack_a, "ra");
-	}
 }
 
 void		sort(t_stack *stack_a, t_stack *stack_b)
@@ -128,8 +138,8 @@ void		sort(t_stack *stack_a, t_stack *stack_b)
 		sort_3(stack_a);
 		sort_4(stack_a, stack_b);
 	}
-	else if (stack_a->size == 5)
-		sort_5(stack_a, stack_b);
-	else if (stack_a->size > 5)
+	else if (stack_a->size == 5 || stack_a->size == 6)
+		sort_56(stack_a, stack_b);
+	else if (stack_a->size > 6)
 		sort_algo(stack_a, stack_b);
 }
