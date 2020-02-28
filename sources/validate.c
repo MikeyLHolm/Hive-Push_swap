@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 10:26:19 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 10:59:19 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 11:41:17 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ t_stack			*parse(int ac, char **av)
 		validate_str(stack_a, av[1]);
 	else
 		validate_array(stack_a, ac, av);
+	index_stack(stack_a);
 	return (stack_a);
 }

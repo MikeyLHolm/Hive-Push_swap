@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 10:31:57 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 15:51:17 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 16:15:19 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void		exit_error(const char *str)
 {
-	// ft_putendl_fd(str, 2);
-	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(str, 2);
+	// ft_putendl_fd("Error", 2);
 	exit(1);
 }

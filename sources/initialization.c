@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:26:12 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 15:46:24 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 14:18:43 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ t_stack		*init_stack(void)
 	return (stack);
 }
 
-t_options		init_options(void)
-{
-	t_options	*options;
+// t_options		init_options(void)
+// {
+// 	t_options	*options;
 
-	if (!(options = (t_options *)malloc(sizeof(t_options))))
-		exit_error(ER_MALLOC);
-	options->count = 0;
-	options->error = 0;
-}
+// 	if (!(options = (t_options *)malloc(sizeof(t_options))))
+// 		exit_error(ER_MALLOC);
+// 	options->count = 0;
+// 	options->error = 0;
+// }

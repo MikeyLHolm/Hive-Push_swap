@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:23:30 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 14:40:53 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 14:21:49 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,23 @@ long		find_smallest(t_lst *head)
 	return (smallest);
 }
 
-long		find_next_smallest(t_lst *head)
-{
-	int		smallest;
-	int		tmp;
+// long		find_next_smallest(t_lst *head)
+// {
+// 	int		smallest;
+// 	int		tmp;
 
-	smallest = head->nb;
-	tmp = head->nb;
-	while (head != NULL)
-	{
-		if (smallest > head->nb)
-			smallest = head->nb;
-		if (head->next && head->next->nb != tmp)
-			break ;
-		head = head->next;
-	}
-	return (smallest);
-}
+// 	smallest = head->nb;
+// 	tmp = head->nb;
+// 	while (head != NULL)
+// 	{
+// 		if (smallest > head->nb)
+// 			smallest = head->nb;
+// 		if (head->next && head->next->nb != tmp)
+// 			break ;
+// 		head = head->next;
+// 	}
+// 	return (smallest);
+// }
 
 long		find_biggest(t_lst *head)
 {

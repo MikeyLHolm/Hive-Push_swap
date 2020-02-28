@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 08:49:40 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:30:15 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef	struct			s_stack
 */
 
 void			display_stack(t_lst *lst, char c);
+int				distance_to_top(t_stack *stack, t_lst *node);
 void			exit_error(const char *str);
 long			find_biggest(t_lst *head);
 int				find_median(t_stack *stack);

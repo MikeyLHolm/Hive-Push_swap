@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/28 08:49:58 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/28 14:14:19 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ HEADER_FILES = push_swap.h
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADER_FILES))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCE_FILES =	display.c \
+SOURCE_FILES =	calc_moves.c \
+				display.c \
 				exit.c \
 				indexing.c \
 				initialization.c \
