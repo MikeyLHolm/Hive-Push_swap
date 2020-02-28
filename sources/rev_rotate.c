@@ -6,28 +6,24 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:21 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 09:43:41 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/27 10:58:53 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-**	rra: reverse rotate a - shift down all elements of stack a by 1.
+**	rra: reverse rotate a/b - shift down all elements of stack a by 1.
 **		 The last element becomes the first one.
 */
 
-/*
-**	rrb: reverse rotate b - shift down all elements of stack b by 1.
-**		 The last element becomes the first one.
-*/
-
-void		lst_rev_rotate(t_stack *stack, char *str)
+void		lst_rev_rotate(t_stack *stack, char *str, int rrr)
 {
 	if (stack && stack->head)
 	{
 		stack->head = stack->head->previous;
-		ft_printf("%s\n", str);
+		if (rrr == 0)
+			ft_printf("%s\n", str);
 	}
 }
 
@@ -37,8 +33,7 @@ void		lst_rev_rotate(t_stack *stack, char *str)
 
 void		lst_rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_printf("rrr\n   ");
-	lst_rev_rotate(stack_a, "rra");
-	ft_printf("   ");
-	lst_rev_rotate(stack_b, "rrb");
+	ft_printf("rrr\n");
+	lst_rev_rotate(stack_a, "rra", 1);
+	lst_rev_rotate(stack_b, "rrb", 1);
 }

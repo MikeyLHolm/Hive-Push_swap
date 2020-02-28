@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:25:16 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/19 11:37:02 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 08:56:42 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ t_lst		*lst_create_node(int nb)
 
 	if (!(node = (t_lst *)malloc(sizeof(t_lst))))
 		exit_error(ER_MALLOC);
+	node->index = -1;
 	node->nb = nb;
 	node->next = NULL;
+	node->previous = NULL;
 	return (node);
 }
 

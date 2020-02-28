@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/26 11:47:46 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/28 08:49:40 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
+# include "../libft/ft_printf/includes/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
 
+/*
+**	Error management
+*/
+
+# define ER_CMD			"Error: Checker command error!"
 # define ER_DUP			"Error: Duplicate found!"
 # define ER_GNL			"Error: Get Next Line!"
 # define ER_MALLOC		"Error: Failed Malloc!"
@@ -25,8 +31,11 @@
 # define ER_NOTINT		"Error: Not an int!"
 # define ER_NOVALARG	"Error: No valid arguments!"
 
-// # define OK				
-// # define KO
+typedef struct			s_options
+{
+	int					count;
+	int					error;
+}						t_options;
 
 /*
 **	List inside a stack
@@ -46,47 +55,54 @@ typedef	struct			s_lst
 
 typedef	struct			s_stack
 {
-	t_lst				*head;
 	int					min_value;
 	int					max_value;
 	int					size;
+	t_lst				*head;
 }						t_stack;
 
 /*
 **	General struct for the project.
 */
 
-typedef struct			s_push_swap
-{
-	t_stack		*stack_aspare;
-	t_stack		*stack_bspare;
-}						t_push_swap;
+// typedef struct			s_push_swap
+// {
+// 	t_stack		*stack_aspare;
+// 	t_stack		*stack_bspare;
+// }						t_push_swap;
+
+/*
+**	General functions.
+*/
 
 void			display_stack(t_lst *lst, char c);
 void			exit_error(const char *str);
 long			find_biggest(t_lst *head);
 int				find_median(t_stack *stack);
 long			find_smallest(t_lst *head);
+void			index_stack(t_stack *stack);
+t_options		init_options(void);
 t_stack			*init_stack(void);
 int				is_rev_sorted(t_lst *stack);
 int				is_sorted(t_lst *stack);
 int				main(int ac, char **av);
 t_stack			*parse(int ac, char **av);
 void			sort(t_stack *stack_a, t_stack *stack_b);
+void			sort_3(t_stack *stack_a);
 void			sort_algo(t_stack *stack_a, t_stack *stack_b);
 void			validate(t_lst **lst, int ac, char **av);
 
 /*
-**	Operational functions
+**	Operational functions.
 */
 
-void			lst_pop_push(t_stack *dst, t_stack *src, char *str);		// pa + pb
-void			lst_rev_rotate(t_stack *stack, char *str);					// rra + rrb
-void			lst_rrr(t_stack *stack_a, t_stack *stack_b);				// rrr
-void			lst_rotate(t_stack *stack, char *str);						// ra + rb
-void			lst_rr(t_stack *stack_a, t_stack *stack_b);					// rr
-void			lst_swap(t_stack *stack, char *str);						// sa + sb
-void			lst_ss(t_stack *stack_a, t_stack *stack_b);					// ss
+void			lst_pop_push(t_stack *dst, t_stack *src, char *str);
+void			lst_rev_rotate(t_stack *stack, char *str, int rrr);
+void			lst_rrr(t_stack *stack_a, t_stack *stack_b);
+void			lst_rotate(t_stack *stack, char *str, int rr);
+void			lst_rr(t_stack *stack_a, t_stack *stack_b);
+void			lst_swap(t_stack *stack, char *str, int ss);
+void			lst_ss(t_stack *stack_a, t_stack *stack_b);
 
 /*
 **	Rest of the list functions.

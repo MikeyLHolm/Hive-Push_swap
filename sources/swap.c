@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:53 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 09:44:08 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/27 10:07:01 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **			Do nothing if there is only one or no elements.
 */
 
-void		lst_swap(t_stack *stack, char *str)
+void		lst_swap(t_stack *stack, char *str, int ss)
 {
 	t_lst		*tmp;
 
@@ -31,7 +31,8 @@ void		lst_swap(t_stack *stack, char *str)
 		tmp->previous = stack->head;
 		stack->head->next->previous = tmp;
 		stack->head->next = tmp;
-		ft_printf("%s\n", str);
+		if (ss == 0)
+			ft_printf("%s\n", str);
 	}
 }
 
@@ -41,8 +42,7 @@ void		lst_swap(t_stack *stack, char *str)
 
 void		lst_ss(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_printf("ss\n   ");
-	lst_swap(stack_a, "sa");
-	ft_printf("   ");
-	lst_swap(stack_b, "sb");
+	ft_printf("ss\n");
+	lst_swap(stack_a, "sa", 1);
+	lst_swap(stack_b, "sb", 1);
 }

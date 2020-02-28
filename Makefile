@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/02/26 11:49:43 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/02/28 08:49:58 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
-
 
 LIBFT_DIRECTORY = ./libft/
 LIBFT = $(LIBFT_DIRECTORY)libft.a
@@ -30,6 +29,7 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADER_FILES))
 SOURCES_DIRECTORY = ./sources/
 SOURCE_FILES =	display.c \
 				exit.c \
+				indexing.c \
 				initialization.c \
 				list_functions.c \
 				median.c \
@@ -59,17 +59,17 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME_PS)
-
-# $(NAME_CH): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(OBJECTS_CH)
-# 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) $(OBJECTS_CH) -o $(NAME_CH)
-# 	@echo "\n$(NAME_PS): $(GREEN)$(NAME_CH) object files were created$(RESET)"
-# 	@echo "$(NAME_PS): $(GREEN)$(NAME_CH) was created$(RESET)"
+all: $(NAME_PS) $(NAME_CH)
 
 $(NAME_PS): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(OBJECTS_PS)
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) $(OBJECTS_PS) -o $(NAME_PS)
 	@echo "\n$(NAME_PS): $(GREEN)$(NAME_PS) object files were created$(RESET)"
 	@echo "$(NAME_PS): $(GREEN)$(NAME_PS) was created$(RESET)"
+
+$(NAME_CH): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(OBJECTS_CH)
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) $(OBJECTS_CH) -o $(NAME_CH)
+	@echo "\n$(NAME_PS): $(GREEN)$(NAME_CH) object files were created$(RESET)"
+	@echo "$(NAME_PS): $(GREEN)$(NAME_CH) was created$(RESET)"
 
 $(OBJECTS_DIRECTORY):
 	@mkdir -p $(OBJECTS_DIRECTORY)
@@ -108,7 +108,7 @@ fclean: clean
 	@echo "$(NAME_PS): [$(RED)$(NAME_PS) was deleted$(RESET)]"
 	@rm -f $(NAME_CH)
 	@echo "$(NAME_PS): [$(RED)$(NAME_CH) was deleted$(RESET)]"
-	@rm a.out
+	# @rm a.out
 
 re:
 	@$(MAKE) fclean
