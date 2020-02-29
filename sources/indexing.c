@@ -6,11 +6,48 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:49:03 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 15:17:15 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 13:07:26 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Find next index of a elem in A for elem in B.
+**		ie. find which index to bring to top of stack A.
+*/
+
+t_lst				*next_index(t_stack *stack, int index)
+{
+	int				i;
+	t_lst			*next_i;
+	t_lst			*current;
+
+	i = -1;
+	next_i = NULL;
+	current = stack->head;
+	while (++i < stack->size && next_i == NULL)
+	{
+		if (current->index > index)
+			next_i = current;
+		current = current->next;
+	}
+	while (++i < stack->size)
+	{
+		if (index + 1 == next_i->index)
+			return (next_i);
+		if (index < current->index && current->index < next_i->index)
+			next_i = current;
+		current = current->next;
+	}
+	ft_printf("index of next_i = %d\n", next_i->index);
+	ft_printf("nb of next_i = %d\n", next_i->nb);
+	return (next_i);
+}
+
+/*
+**	Finds the smallest number of the stack that has index of -1.
+*/
 
 t_lst				*find_next_smallest(t_stack *stack)
 {
@@ -35,9 +72,12 @@ t_lst				*find_next_smallest(t_stack *stack)
 			current = current->next;
 		}
 	}
-	ft_printf("Hello\n");
 	return (smallest);
 }
+
+/*
+**	Indices the stack from smallest to biggest.
+*/
 
 void				index_stack(t_stack *stack)
 {

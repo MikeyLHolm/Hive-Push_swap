@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/25 09:41:32 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:53:14 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,24 @@
 **	ie. make b-head >> a-head and del b-head.
 */
 
-void	lst_pop_push(t_stack *dst, t_stack *src, char *str)
+void			lst_pop_push(t_stack *dst, t_stack *src, char *str, int pp)
 {
 	lst_push(dst, lst_pop(src));
-	ft_printf("%s\n", str);
+	if (pp == 0)
+		ft_putendl(str);
 }
 
 /*
-**	pb:	push b - take the first element at the top of a and
-**		put it at the top of b. Do nothing if a is empty.
+**	push b until a has 3 elements left.
 */
+
+void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
+{
+	while(stack_a->size > 3)
+	{
+		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
+			(stack_a->head->nb != find_smallest(stack_a->head)))
+			lst_pop_push(stack_b, stack_a, "pb", 0);
+		stack_a->head = stack_a->head->next;
+	}
+}

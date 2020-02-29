@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:51:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 14:51:33 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:53:50 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@
 void		run_command(t_stack *stack_a, t_stack *stack_b, const char *line)
 {
 	if (ft_strequ(line, "sa"))
-		lst_swap(stack_a, "sa", 0);
+		lst_swap(stack_a, "sa", 1);
 	else if (ft_strequ(line, "sb"))
-		lst_swap(stack_b, "sb", 0);
+		lst_swap(stack_b, "sb", 1);
 	else if (ft_strequ(line, "ss"))
-		lst_ss(stack_a, stack_b);
+		lst_ss(stack_a, stack_b, 1);
 	else if (ft_strequ(line, "pa"))
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 1);
 	else if (ft_strequ(line, "pb"))
-		lst_pop_push(stack_b, stack_a, "pb");
+		lst_pop_push(stack_b, stack_a, "pb", 1);
 	else if (ft_strequ(line, "ra"))
-		lst_rotate(stack_a, "ra", 0);
+		lst_rotate(stack_a, "ra", 1);
 	else if (ft_strequ(line, "rb"))
-		lst_rotate(stack_b, "rb", 0);
+		lst_rotate(stack_b, "rb", 1);
 	else if (ft_strequ(line, "rr"))
-		lst_rr(stack_a, stack_b);
+		lst_rr(stack_a, stack_b, 1);
 	else if (ft_strequ(line, "rra"))
-		lst_rev_rotate(stack_a, "rra", 0);
+		lst_rev_rotate(stack_a, "rra", 1);
 	else if (ft_strequ(line, "rrb"))
-		lst_rev_rotate(stack_b, "rrb", 0);
+		lst_rev_rotate(stack_b, "rrb", 1);
 	else if (ft_strequ(line, "rrr"))
-		lst_rrr(stack_a, stack_b);
+		lst_rrr(stack_a, stack_b, 1);
 	else
 		exit_error(ER_CMD);
 }

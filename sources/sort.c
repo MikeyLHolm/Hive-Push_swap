@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:48:02 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 15:41:42 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:54:48 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,23 @@ void		sort_4(t_stack *stack_a, t_stack *stack_b)
 
 	tmp = stack_b->head->nb;
 	if (tmp < stack_a->head->nb)
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 0);
 	else if (tmp > stack_a->head->nb && tmp < stack_a->head->next->nb)
 	{
 		lst_rotate(stack_a, "ra", 0);
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 0);
 		lst_rev_rotate(stack_a, "rra", 0);
 	}
 	else if (tmp < stack_a->head->previous->nb && tmp > stack_a->head->next->nb)
 	{
 		lst_rev_rotate(stack_a, "rra", 0);
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 0);
 		lst_rotate(stack_a, "ra", 0);
 		lst_rotate(stack_a, "ra", 0);
 	}
 	else if (tmp > stack_a->head->previous->nb)
 	{
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 0);
 		lst_rotate(stack_a, "ra", 0);
 	}
 }
@@ -108,7 +108,7 @@ void		sort_56(t_stack *stack_a, t_stack *stack_b)
 	{
 		token = (tmp == stack_a->head) ? 1 : 0;
 		if (stack_a->head->nb < median)
-			lst_pop_push(stack_b, stack_a, "pb");
+			lst_pop_push(stack_b, stack_a, "pb", 0);
 		else
 			lst_rotate(stack_a, "ra", 0);
 	}
@@ -118,7 +118,7 @@ void		sort_56(t_stack *stack_a, t_stack *stack_b)
 	else if (stack_b->size == 3 && !is_rev_sorted(stack_b->head))
 		rev_sort_3(stack_b);
 	while (stack_b->size > 0)
-		lst_pop_push(stack_a, stack_b, "pa");
+		lst_pop_push(stack_a, stack_b, "pa", 0);
 }
 
 void		sort(t_stack *stack_a, t_stack *stack_b)
@@ -132,13 +132,13 @@ void		sort(t_stack *stack_a, t_stack *stack_b)
 		sort_3(stack_a);
 	else if (stack_a->size == 4)
 	{
-		lst_pop_push(stack_b, stack_a, "pb");
+		lst_pop_push(stack_b, stack_a, "pb", 0);
 		sort_3(stack_a);
 		sort_4(stack_a, stack_b);
 	}
 	else if (stack_a->size == 5 || stack_a->size == 6)
 	{
-		ft_printf("to top= %d\n", distance_to_top(stack_a, stack_a->head->previous->previous));
+		// ft_printf("to top= %d\n", distance_to_top(stack_a, stack_a->head->previous->previous));
 		sort_56(stack_a, stack_b);
 	}
 	else if (stack_a->size > 6)

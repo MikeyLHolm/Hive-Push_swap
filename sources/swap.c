@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:53 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 10:07:01 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:51:26 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ void		lst_swap(t_stack *stack, char *str, int ss)
 **	ss:	sa and sb at the same time.
 */
 
-void		lst_ss(t_stack *stack_a, t_stack *stack_b)
+void		lst_ss(t_stack *stack_a, t_stack *stack_b, int ss)
 {
-	ft_printf("ss\n");
 	lst_swap(stack_a, "sa", 1);
 	lst_swap(stack_b, "sb", 1);
+	if (ss == 0)
+		ft_putendl("ss\n");
 }

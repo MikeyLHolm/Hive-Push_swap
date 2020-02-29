@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:52:10 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 15:17:49 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:08:10 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int			main(int ac, char **av)
 		return (0);
 	}
 	stack_b = init_stack();
-	// display_stack(stack_a->head, 'A');
-	// display_stack(stack_b->head, 'B');
+	display_stack(stack_a->head, 'A');
+	display_stack(stack_b->head, 'B');
 	sort(stack_a, stack_b);
 	is_sorted(stack_a->head);
-	// display_stack(stack_a->head, 'A');
-	// display_stack(stack_b->head, 'B');
-	// ft_printf("Stack size = %d\n", stack_a->size);
-	// ft_printf("Stack size = %d\n", stack_b->size);
+	display_stack(stack_a->head, 'A');
+	display_stack(stack_b->head, 'B');
+	ft_printf("Stack size = %d\n", stack_a->size);
+	ft_printf("Stack size = %d\n", stack_b->size);
 	lst_free(stack_a);
 	lst_free(stack_b);
 	// while (1);

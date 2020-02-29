@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:31 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 10:58:41 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:57:56 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		lst_rotate(t_stack *stack, char *str, int rr)
 	{
 		stack->head = stack->head->next;
 		if (rr == 0)
-			ft_printf("%s\n", str);
+			ft_putendl(str);
 	}
 }
 
@@ -31,9 +31,10 @@ void		lst_rotate(t_stack *stack, char *str, int rr)
 **	rr:	ra and rb at the same time.
 */
 
-void		lst_rr(t_stack *stack_a, t_stack *stack_b)
+void		lst_rr(t_stack *stack_a, t_stack *stack_b, int rr)
 {
-	ft_printf("rr\n");
 	lst_rotate(stack_a, "ra", 1);
 	lst_rotate(stack_b, "rb", 1);
+	if (rr == 0)
+		ft_putendl("rr");
 }

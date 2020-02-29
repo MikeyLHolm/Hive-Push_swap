@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:23:30 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 14:21:49 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/02/29 12:32:42 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			is_rev_sorted(t_lst *stack)
 
 long		find_smallest(t_lst *head)
 {
-	int		smallest;
-	int		tmp;
+	long	smallest;
+	long	tmp;
 
 	smallest = head->nb;
 	tmp = head->nb;
@@ -55,35 +55,17 @@ long		find_smallest(t_lst *head)
 	{
 		if (smallest > head->nb)
 			smallest = head->nb;
-		if (head->next && head->next->nb != tmp)
-			break ;
+		if (head->next && head->next->nb == tmp)
+			return (smallest);
 		head = head->next;
 	}
 	return (smallest);
 }
 
-// long		find_next_smallest(t_lst *head)
-// {
-// 	int		smallest;
-// 	int		tmp;
-
-// 	smallest = head->nb;
-// 	tmp = head->nb;
-// 	while (head != NULL)
-// 	{
-// 		if (smallest > head->nb)
-// 			smallest = head->nb;
-// 		if (head->next && head->next->nb != tmp)
-// 			break ;
-// 		head = head->next;
-// 	}
-// 	return (smallest);
-// }
-
 long		find_biggest(t_lst *head)
 {
-	int		biggest;
-	int		tmp;
+	long	biggest;
+	long	tmp;
 
 	biggest = head->nb;
 	tmp = head->nb;
@@ -91,8 +73,8 @@ long		find_biggest(t_lst *head)
 	{
 		if (biggest < head->nb)
 			biggest = head->nb;
-		if (head->next && head->next->nb != tmp)
-			break ;
+		if (head->next && head->next->nb == tmp)
+			return (biggest);
 		head = head->next;
 	}
 	return (biggest);
