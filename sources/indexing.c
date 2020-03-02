@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 08:49:03 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 13:07:26 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 14:36:42 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_lst				*next_index(t_stack *stack, int index)
 			next_i = current;
 		current = current->next;
 	}
-	while (++i < stack->size)
+	while (i++ < stack->size)
 	{
 		if (index + 1 == next_i->index)
 			return (next_i);
@@ -40,8 +40,6 @@ t_lst				*next_index(t_stack *stack, int index)
 			next_i = current;
 		current = current->next;
 	}
-	ft_printf("index of next_i = %d\n", next_i->index);
-	ft_printf("nb of next_i = %d\n", next_i->nb);
 	return (next_i);
 }
 

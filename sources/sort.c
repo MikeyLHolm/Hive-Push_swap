@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:48:02 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 12:54:48 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 17:41:01 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,7 @@ void		sort(t_stack *stack_a, t_stack *stack_b)
 		sort_4(stack_a, stack_b);
 	}
 	else if (stack_a->size == 5 || stack_a->size == 6)
-	{
-		// ft_printf("to top= %d\n", distance_to_top(stack_a, stack_a->head->previous->previous));
 		sort_56(stack_a, stack_b);
-	}
 	else if (stack_a->size > 6)
 		sort_algo(stack_a, stack_b);
 }

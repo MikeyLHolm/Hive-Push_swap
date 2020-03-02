@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:54:37 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 12:55:58 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 11:36:28 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_options		init_options(void);
 t_stack			*init_stack(void);
 int				is_rev_sorted(t_lst *stack);
 int				is_sorted(t_lst *stack);
+t_lst			*look_for_izero(t_stack *stack);
 int				main(int ac, char **av);
 t_lst			*next_index(t_stack *stack, int index);
 t_stack			*parse(int ac, char **av);

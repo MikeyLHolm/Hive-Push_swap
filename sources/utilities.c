@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:23:30 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 12:32:42 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 17:24:20 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ int			is_rev_sorted(t_lst *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+t_lst		*look_for_izero(t_stack *stack)
+{
+	t_lst	*izero;
+
+	izero = NULL;
+	while (1)
+	{
+		if (stack->head->index == 0)
+		{
+			izero = stack->head;
+			break ;
+		}
+		stack->head = stack->head->next;
+	}
+	return (izero);
 }
 
 long		find_smallest(t_lst *head)

@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 12:53:14 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 17:41:10 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
 			(stack_a->head->nb != find_smallest(stack_a->head)))
 			lst_pop_push(stack_b, stack_a, "pb", 0);
-		stack_a->head = stack_a->head->next;
+		if ((stack_a->head->nb == find_biggest(stack_a->head)) ||
+			(stack_a->head->nb == find_smallest(stack_a->head)))
+			stack_a->head = stack_a->head->next;
 	}
 }

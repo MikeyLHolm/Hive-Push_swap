@@ -6,68 +6,118 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:28:11 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/29 13:03:05 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/02 17:43:47 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void		sort_stacks(t_stack *stack_a, t_stack *stack_b)
-// {
+int			check_direction(t_stack *stack, t_lst *node)
+{
+	int			operations;
+	t_lst		*current;
 
-// }
+	operations = -1;
+	current = stack->head;
+	while (++operations < stack->size)
+	{
+		if (node == current)
+			break ;
+		current = current->next;
+	}
+	if (operations > stack->size / 2)
+		return (-1);
+	return (1);
+}
 
-// void		rev_sort_b(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	(void)stack_a;
-// 	(void)stack_b;
-// 	while (stack_b->head == find_biggest(stack_b->head))
-// 		lst_pop_push(stack_a, stack_b, "pa");
-	
-// 	Index stack
-	
-// 	move from smallest to bottom.
-	
-// 	{
-// 		if (find_smallest(stack_b->head <= stack_b->size / 2))
-// 			lst_rotate(stack_b, "rb", 0);
-// 		else
-// 			lst_rev_rotate(stack_b, "rrb", 0);
-// 	}
-// 	while (!is_rev_sorted)
-// }
+t_lst		*find_next_move(t_stack *stack_a, t_stack *stack_b)
+{
+	int		i;
+	int		min_moves;
+	int		moves;
+	t_lst	*current;
+	t_lst	*next_move;
 
-// void		median_push_b(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	int		token;
-// 	int		median;
-// 	t_lst	*tmp;
+	i = -1;
+	min_moves = 999999;
+	current = stack_b->head;
+	next_move = NULL;
+	while (++i < stack_b->size)
+	{
+		moves = distance_to_top(stack_b, current) +
+				distance_to_top(stack_a, next_index(stack_a, current->index));
+		if (moves < min_moves ||
+			(moves == min_moves && distance_to_top(stack_b, current) > 0
+		&& distance_to_top(stack_a, next_index(stack_a, current->index)) > 0))
+		{
+			min_moves = moves;
+			next_move = current;
+		}
+		current = current->next;
+	}
+	return (next_move);
+}
 
-// 	median = find_median(stack_a);
-// 	tmp = stack_a->head->previous;
-// 	token = 0;
-// 	while (token != 1)
-// 	{
-// 		token = (tmp == stack_a->head) ? 1 : 0;
-// 		if (stack_a->head->nb < median)
-// 			lst_pop_push(stack_b, stack_a, "pb");
-// 		else
-// 			lst_rotate(stack_a, "ra", 0);
-// 	}
-// }
+void		execute_move(t_stack *stack_a, t_stack *stack_b, t_lst *next_move)
+{
+	int		dir_a;
+	int		dir_b;
+	t_lst	*a;
+
+	dir_a = 0;
+	dir_b = 0;
+	a = next_index(stack_a, next_move->index);
+	while ((distance_to_top(stack_a, a) > 0 || distance_to_top(stack_b, next_move) > 0))
+	{
+		if (distance_to_top(stack_a, a) > 0)
+			dir_a = check_direction(stack_a, a);
+		if (distance_to_top(stack_b, next_move) > 0)
+			dir_b = check_direction(stack_b, next_move);
+		if (dir_a == 1 && dir_b == 1)
+		{
+			dir_a = 0;
+			dir_b = 0;
+			lst_rr(stack_a, stack_b, 0);
+		}
+		else if (dir_a == -1 && dir_b == -1)
+		{
+			dir_a = 0;
+			dir_b = 0;
+			lst_rrr(stack_a, stack_b, 0);
+		}
+		if (dir_a == 1 && dir_b != 1)
+			lst_rotate(stack_a, "ra", 0);
+		else if (dir_a == -1 && dir_b != -1)
+			lst_rev_rotate(stack_a, "rra", 0);
+		if (dir_b == 1 && dir_a != 1)
+			lst_rotate(stack_b, "rb", 0);
+		else if (dir_b == -1 && dir_a != -1)
+			lst_rev_rotate(stack_b, "rrb", 0);
+	}
+}
 
 void		sort_algo(t_stack *stack_a, t_stack *stack_b)
 {
+	t_lst	*next_move;
+
 	push_b_until_3(stack_a, stack_b);
-	ft_printf("SIZE B = %d\n", stack_b->size);
 	sort_3(stack_a);
-	ft_printf("stack b head = %d\n", stack_b->head->nb);
-	next_index(stack_a, stack_b->head->index);
-	
-	// while (is_sorted(stack_a))
-	// {
-	// 	check_next_move: distance to top. if < size/2 > rotate, otherwise rev rotate.
-	// 		if same move for both A and B > execute both.
-	// 	pa
-	// }
+	// display_stack(stack_a->head, 'A');
+	// display_stack(stack_b->head, 'b');
+	// ft_printf("Stack size = %d\n", stack_b->size);
+	while (stack_b->size > 0)
+	{
+		next_move = find_next_move(stack_a, stack_b);
+		execute_move(stack_a, stack_b, next_move);
+		lst_pop_push(stack_a, stack_b, "pa", 0);
+	}
+	if (!is_sorted(stack_a->head))
+	{
+		if (check_direction(stack_a, look_for_izero(stack_a)) > 0)
+			while (!is_sorted(stack_a->head))
+				lst_rotate(stack_a, "ra", 0);
+		else if (check_direction(stack_a, look_for_izero(stack_a)) < 0)
+			while (!is_sorted(stack_a->head))
+				lst_rev_rotate(stack_a, "rra", 0);
+	}
 }
