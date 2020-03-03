@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:52:10 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/02 17:40:25 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/03 10:34:33 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int			main(int ac, char **av)
 	// display_stack(stack_a->head, 'A');
 	// display_stack(stack_b->head, 'B');
 	sort(stack_a, stack_b);
-	is_sorted(stack_a->head);
 	// display_stack(stack_a->head, 'A');
 	// display_stack(stack_b->head, 'B');
 	// ft_printf("Stack A size = %d\n", stack_a->size);

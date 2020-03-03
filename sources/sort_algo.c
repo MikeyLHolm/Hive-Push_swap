@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:28:11 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/02 17:43:47 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/03 17:49:47 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,6 @@ void		sort_algo(t_stack *stack_a, t_stack *stack_b)
 
 	push_b_until_3(stack_a, stack_b);
 	sort_3(stack_a);
-	// display_stack(stack_a->head, 'A');
-	// display_stack(stack_b->head, 'b');
-	// ft_printf("Stack size = %d\n", stack_b->size);
 	while (stack_b->size > 0)
 	{
 		next_move = find_next_move(stack_a, stack_b);

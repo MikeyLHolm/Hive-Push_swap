@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/03/02 11:06:46 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/03/03 17:34:11 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,6 @@ fclean: clean
 	@echo "$(NAME_PS): [$(RED)$(NAME_PS) was deleted$(RESET)]"
 	@rm -f $(NAME_CH)
 	@echo "$(NAME_PS): [$(RED)$(NAME_CH) was deleted$(RESET)]"
-	# @rm a.out
 
 re:
 	@$(MAKE) fclean

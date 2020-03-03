@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/02 17:41:10 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/03 17:47:26 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,54 @@ void			lst_pop_push(t_stack *dst, t_stack *src, char *str, int pp)
 }
 
 /*
-**	push b until a has 3 elements left.
+**	push b until a has 3 elements left. seur toimii ainkain.
 */
+
+// void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	while(stack_a->size > 3)
+// 	{
+// 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
+// 			(stack_a->head->nb != find_smallest(stack_a->head)))
+// 			lst_pop_push(stack_b, stack_a, "pb", 0);
+// 		else if ((stack_a->head->nb == find_biggest(stack_a->head)) ||
+// 			(stack_a->head->nb == find_smallest(stack_a->head)))
+// 			lst_rotate(stack_a, "ra", 0);
+// 	}
+// }
+
+// void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	while(stack_a->size > 3)
+// 	{
+// 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
+// 			(stack_a->head->nb != find_smallest(stack_a->head)))
+// 			lst_pop_push(stack_b, stack_a, "pb", 0);
+// 		else
+// 			lst_rotate(stack_a, "ra", 0);
+// 	}
+// }
 
 void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
 {
+	int		size;
+
+	size = stack_a->size / 2;
+	while(stack_a->size > size)
+	{
+		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
+			(stack_a->head->nb != find_smallest(stack_a->head)) &&
+			(stack_a->head->index <= size))
+			lst_pop_push(stack_b, stack_a, "pb", 0);
+		else
+			lst_rotate(stack_a, "ra", 0);
+	}
 	while(stack_a->size > 3)
 	{
 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
 			(stack_a->head->nb != find_smallest(stack_a->head)))
 			lst_pop_push(stack_b, stack_a, "pb", 0);
-		if ((stack_a->head->nb == find_biggest(stack_a->head)) ||
-			(stack_a->head->nb == find_smallest(stack_a->head)))
-			stack_a->head = stack_a->head->next;
+		else
+			lst_rotate(stack_a, "ra", 0);
 	}
 }
