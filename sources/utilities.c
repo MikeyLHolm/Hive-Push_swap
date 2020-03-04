@@ -6,11 +6,15 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:23:30 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/03 17:48:32 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 10:13:04 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Checks if stack is sorted in ascending order
+*/
 
 int			is_sorted(t_lst *stack)
 {
@@ -28,6 +32,10 @@ int			is_sorted(t_lst *stack)
 	return (1);
 }
 
+/*
+**	Checks if stack is sorted in descending order
+*/
+
 int			is_rev_sorted(t_lst *stack)
 {
 	t_lst	*head;
@@ -43,6 +51,10 @@ int			is_rev_sorted(t_lst *stack)
 	}
 	return (1);
 }
+
+/*
+**	Finds and returns the node with index = 0.
+*/
 
 t_lst		*look_for_izero(t_stack *stack)
 {
@@ -63,6 +75,10 @@ t_lst		*look_for_izero(t_stack *stack)
 	return (izero);
 }
 
+/*
+**	Finds and returns numeric value of smallest node.
+*/
+
 long		find_smallest(t_lst *head)
 {
 	long	smallest;
@@ -80,6 +96,10 @@ long		find_smallest(t_lst *head)
 	}
 	return (smallest);
 }
+
+/*
+**	Finds and returns numeric value of biggest node.
+*/
 
 long		find_biggest(t_lst *head)
 {

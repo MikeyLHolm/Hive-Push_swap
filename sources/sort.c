@@ -6,11 +6,15 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:48:02 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/03 16:09:30 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 10:10:56 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Reverse sorts stack of size 3.
+*/
 
 void		rev_sort_3(t_stack *stack_b)
 {
@@ -40,6 +44,10 @@ void		rev_sort_3(t_stack *stack_b)
 		lst_rev_rotate(stack_b, "rrb", 0);
 }
 
+/*
+**	Sorts stack of size 3.
+*/
+
 void		sort_3(t_stack *stack_a)
 {
 	if (stack_a->head->nb > stack_a->head->next->nb &&
@@ -68,6 +76,10 @@ void		sort_3(t_stack *stack_a)
 		lst_rev_rotate(stack_a, "rra", 0);
 }
 
+/*
+**	Sorts stack of size 4.
+*/
+
 void		sort_4(t_stack *stack_a, t_stack *stack_b)
 {
 	int		tmp;
@@ -95,6 +107,10 @@ void		sort_4(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+/*
+**	Sorts stack of size 5 and 6.
+*/
+
 void		sort_56(t_stack *stack_a, t_stack *stack_b)
 {
 	int		token;
@@ -120,6 +136,10 @@ void		sort_56(t_stack *stack_a, t_stack *stack_b)
 	while (stack_b->size > 0)
 		lst_pop_push(stack_a, stack_b, "pa", 0);
 }
+
+/*
+**	Sort dispatcher.
+*/
 
 void		sort(t_stack *stack_a, t_stack *stack_b)
 {

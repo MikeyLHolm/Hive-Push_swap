@@ -6,13 +6,17 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 11:42:26 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/03 09:40:00 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 10:07:31 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int				distance_to_top(t_stack *stack, t_lst *node)
+/*
+**	Calculates node's distance to top of the stack.
+*/
+
+int				dist_to_top(t_stack *stack, t_lst *node)
 {
 	int			operations;
 	t_lst		*current;

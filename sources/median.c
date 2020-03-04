@@ -6,11 +6,15 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 11:39:46 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/27 10:13:28 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 10:10:31 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+/*
+**	Sorting helper for find_median.
+*/
 
 static void		sort_array(long *array, int len)
 {
@@ -32,6 +36,10 @@ static void		sort_array(long *array, int len)
 		}
 	}
 }
+
+/*
+**	Finds median of the stack and returns the nb value of it.
+*/
 
 int				find_median(t_stack *stack)
 {

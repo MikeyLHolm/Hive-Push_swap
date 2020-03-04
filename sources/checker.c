@@ -6,17 +6,33 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:51:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/03 17:31:16 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 13:37:42 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+static void		check_options(t_stack *stack_a, t_stack *stack_b,
+									t_options *options, int moves)
+{
+	if (options->verbose)
+	{
+		ft_printf(BOLD_MAGENTA"_______________________________________\n"RESET);
+		display_stack(stack_a->head, 'A');
+		ft_printf(BOLD_MAGENTA"_______________________________________\n"RESET);
+		display_stack(stack_b->head, 'B');
+		ft_printf(BOLD_MAGENTA"_______________________________________\n"RESET);
+		write(1, "\n", 1);
+	}
+	if (options->moves)
+		ft_printf(BOLD_YELLOW"Operations: [ %d ]\n"RESET, moves);
+}
+
 /*
 ** Compares read command and executes the right command.
 */
 
-void		run_command(t_stack *stack_a, t_stack *stack_b, const char *line)
+static void		run_cmd(t_stack *stack_a, t_stack *stack_b, const char *line)
 {
 	if (ft_strequ(line, "sa"))
 		lst_swap(stack_a, "sa", 1);
@@ -48,7 +64,7 @@ void		run_command(t_stack *stack_a, t_stack *stack_b, const char *line)
 **	Checker function to create and validate stacks & read and run the commands.
 */
 
-void		checker(int ac, char **av)
+static void		checker(int ac, char **av, t_options *options)
 {
 	char		*line;
 	int			ret;
@@ -62,17 +78,17 @@ void		checker(int ac, char **av)
 	stack_a = parse(ac, av);
 	while (get_next_line(0, &line) > 0)
 	{
-		run_command(stack_a, stack_b, line);
+		run_cmd(stack_a, stack_b, line);
 		moves++;
 		free(line);
 	}
 	if (ret < 0)
 		exit_error(ER_GNL);
+	check_options(stack_a, stack_b, options, moves);
 	if (is_sorted(stack_a->head) && stack_b->size == 0)
 		ft_printf(BOLD_GREEN"OK\n"RESET);
 	else
 		ft_printf(BOLD_RED"KO\n"RESET);
-	ft_printf(BOLD_YELLOW"%d\n"RESET, moves);
 	lst_free(stack_a);
 	lst_free(stack_b);
 }
@@ -81,9 +97,26 @@ void		checker(int ac, char **av)
 **	Main to start Checker.
 */
 
-int			main(int ac, char **av)
+int				main(int ac, char **av)
 {
-	if (ac > 1)
-		checker(ac, av);
+	t_options	*options;
+
+	options = init_options();
+	while (ac > 1 && (!ft_strcmp(av[1], "-h") || !ft_strcmp(av[1], "-l") ||
+			!ft_strcmp(av[1], "-v")))
+	{
+		if (!ft_strcmp(av[1], "-h"))
+			options->help = 1;
+		else if (!ft_strcmp(av[1], "-l"))
+			options->moves = 1;
+		else if (!ft_strcmp(av[1], "-v"))
+			options->verbose = 1;
+		++av;
+		--ac;
+	}
+	if (ac > 1 && !options->help)
+		checker(ac, av, options);
+	else if (options->help)
+		exit_help();
 	return (0);
 }

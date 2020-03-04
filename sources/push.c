@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:01:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/03 17:47:26 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 08:36:56 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,40 +26,17 @@ void			lst_pop_push(t_stack *dst, t_stack *src, char *str, int pp)
 }
 
 /*
-**	push b until a has 3 elements left. seur toimii ainkain.
+**	push b until a has 3 elements left. Protecting smallest and largest.
+**	Push in two parts. First indexes that are smaller than stack->size / 2 and
+**	after that rest until stack has just 3 numbers left.
 */
-
-// void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	while(stack_a->size > 3)
-// 	{
-// 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
-// 			(stack_a->head->nb != find_smallest(stack_a->head)))
-// 			lst_pop_push(stack_b, stack_a, "pb", 0);
-// 		else if ((stack_a->head->nb == find_biggest(stack_a->head)) ||
-// 			(stack_a->head->nb == find_smallest(stack_a->head)))
-// 			lst_rotate(stack_a, "ra", 0);
-// 	}
-// }
-
-// void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	while(stack_a->size > 3)
-// 	{
-// 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
-// 			(stack_a->head->nb != find_smallest(stack_a->head)))
-// 			lst_pop_push(stack_b, stack_a, "pb", 0);
-// 		else
-// 			lst_rotate(stack_a, "ra", 0);
-// 	}
-// }
 
 void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
 {
 	int		size;
 
 	size = stack_a->size / 2;
-	while(stack_a->size > size)
+	while (stack_a->size > size)
 	{
 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
 			(stack_a->head->nb != find_smallest(stack_a->head)) &&
@@ -68,7 +45,7 @@ void			push_b_until_3(t_stack *stack_a, t_stack *stack_b)
 		else
 			lst_rotate(stack_a, "ra", 0);
 	}
-	while(stack_a->size > 3)
+	while (stack_a->size > 3)
 	{
 		if ((stack_a->head->nb != find_biggest(stack_a->head)) &&
 			(stack_a->head->nb != find_smallest(stack_a->head)))

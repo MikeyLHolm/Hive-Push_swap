@@ -6,7 +6,7 @@
 #    By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/10 07:51:49 by mlindhol          #+#    #+#              #
-#    Updated: 2020/03/03 17:34:11 by mlindhol         ###   ########.fr        #
+#    Updated: 2020/03/04 11:53:19 by mlindhol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,9 +92,6 @@ lib:
 run:
 	$(CC) $(FLAGS) $(LIBRARIES) $(SOURCES_PS) $(SOURCES)
 	./a.out 0 -1 99 17 8 3 55
-
-# ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l
-# ./push_swap $ARG
 
 clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
