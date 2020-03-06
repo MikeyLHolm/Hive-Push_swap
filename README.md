@@ -56,7 +56,7 @@ Running program: ```./push_swap 1 5 7 9 4 2```
 Script for random numbers. ```ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l```
 
 Python visualizer by [Emmanuel Ruaud](https://github.com/o-reo)
-```python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"````
+To use (remove []): ```[python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`]```
 
 ## Grade
 **118 / 100**
