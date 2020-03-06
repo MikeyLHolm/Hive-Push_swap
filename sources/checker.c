@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 07:51:44 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/04 13:37:42 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/04 14:10:49 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ int				main(int ac, char **av)
 		checker(ac, av, options);
 	else if (options->help)
 		exit_help();
+	free(options);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 10:26:19 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/02/28 11:41:17 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/06 14:12:59 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int				ft_isint(char *str)
 	char		*tmp;
 
 	tmp = str;
+	if (tmp[0] == '-' || tmp[0] == '+')
+		tmp++;
 	while (*tmp)
 	{
-		if (tmp[0] == '-' || tmp[0] == '+')
-			tmp++;
 		if (*tmp > '9' || *tmp < '0')
 			exit_error(ER_NOTINT);
 		tmp++;
@@ -95,10 +95,8 @@ static void		validate_str(t_stack *stack_a, char *str)
 		nb = ft_isint(arr[i]);
 		ft_isdup(stack_a, nb);
 		lst_add(stack_a, lst_create_node(nb));
-		free(arr[i]);
-		arr[i] = NULL;
 	}
-	ft_strdel(arr);
+	ft_strsplit_free(&arr);
 }
 
 /*

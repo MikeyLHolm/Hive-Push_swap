@@ -6,7 +6,7 @@
 /*   By: mlindhol <mlindhol@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:25:16 by mlindhol          #+#    #+#             */
-/*   Updated: 2020/03/04 08:34:06 by mlindhol         ###   ########.fr       */
+/*   Updated: 2020/03/06 14:10:21 by mlindhol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ t_lst		*lst_pop(t_stack *stack)
 			tmp->next = NULL;
 			tmp->previous = NULL;
 		}
+		--stack->size;
 	}
-	--stack->size;
 	return (tmp);
 }
 
