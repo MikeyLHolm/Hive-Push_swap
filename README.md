@@ -52,8 +52,9 @@ Do this until stack b is empty and a is already sorted because push happens only
 In project folder: ```make```
 
 Running program: ```./push_swap 1 5 7 9 4 2```
+PS + CH: ```ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker $ARG```
 
-Script for random numbers. ```ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l```
+RNG generator: ```ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l```
 
 Python visualizer by [Emmanuel Ruaud](https://github.com/o-reo)
 
