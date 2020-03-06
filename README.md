@@ -40,6 +40,24 @@ Do this until stack b is empty and a is already sorted because push happens only
 * Implement sa/sb/ss to the main algo.
 * Running operations thru multiple algorithms and choosing the best to be executed.
 
+## Bugs
+
+* Pushing from empty stack on ./checker alone does not ignore the move properly.
+* 1-1, 1+1 etc. are valid numbers even if they shouldn't be.
+
+## How to use
+
+```git clone https://github.com/MikeyLHolm/Hive-Push_swap.git```
+
+In project folder: ```make```
+
+Running program: ```./push_swap 1 5 7 9 4 2```
+
+Script for random numbers. ```ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"` ; time ./push_swap $ARG | wc -l```
+
+Python visualizer by [Emmanuel Ruaud](https://github.com/o-reo)
+```python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"````
+
 ## Grade
 **118 / 100**
 
