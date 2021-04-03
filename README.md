@@ -12,6 +12,8 @@ need to be sorted. You have at your disposal a set of int values, 2 stacks and a
 instructions to manipulate both stacks.
 
 ## Basic idea behind the main algorithm
+![push_swap flow graph](https://github.com/MikeyLHolm/Hive-Push_swap/blob/master/ps_flow.png "push_swap flow graph")
+
 Idea is to push all but three numbers to stack b at start. First pushing smallest half (index < size/2) besides the index 0. After that pushing till there is only 3 numbers left in stack: first, last and 3rd index.
 
 Then we start main algo that calculates moves to the top of the stack where the push to other stack happens. It calculates distance_to_top of a node in stack b and then finds its next index in stack a and counts distance_to_top for that one. Smallest dist a + dist b gets stored and after whole stack b has been looped thru the smallest move gets executed.
